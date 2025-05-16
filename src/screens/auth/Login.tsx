@@ -1,10 +1,4 @@
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import FastImage from 'react-native-fast-image';
@@ -12,24 +6,16 @@ import {ms} from 'react-native-size-matters';
 import {images} from '../../utils/Images';
 import {fontFamily} from '../../utils/Fonts';
 import {colors} from '../../utils/Colors';
-import {CustomInput} from '../../components';
-import {Button, TextField} from 'react-native-ui-lib';
-import {Dropdown} from 'react-native-element-dropdown';
-import {isIos} from '../../utils/Constant';
+import {
+  CustomInput,
+  DropdownInput,
+  KeyboardAvoidScrollView,
+  TextField,
+} from '../../components';
+import {Button} from 'react-native-ui-lib';
 import {useNavigation} from '@react-navigation/native';
-import {GlobalStyles} from '../../utils/GlobalStyles';
 import {DownArrow, ErrorIcon, ShowPassword} from '../../utils/Svgs';
-
-const data = [
-  {label: 'Item 1', value: '1'},
-  {label: 'Item 2', value: '2'},
-  {label: 'Item 3', value: '3'},
-  {label: 'Item 4', value: '4'},
-  {label: 'Item 5', value: '5'},
-  {label: 'Item 6', value: '6'},
-  {label: 'Item 7', value: '7'},
-  {label: 'Item 8', value: '8'},
-];
+import {dropdownData} from '../../utils/ConstantData';
 
 const Login = () => {
   const {navigate} = useNavigation<any>();
@@ -50,7 +36,7 @@ const Login = () => {
   const onChangePassword = (text: string) => {
     if (text?.length === 0) {
       setIsPasswordError(true);
-      setPasswordError('Field is required');
+      setPasswordError('Password is required');
     } else {
       setIsPasswordError(false);
       setPasswordError('');
@@ -61,18 +47,13 @@ const Login = () => {
     setIsSecure(!isSecure);
   };
   const onPressLogin = () => {
-    navigate('Home');
+    navigate('Main');
   };
 
   return (
     <View className="flex-1 bg-white">
-      <SafeAreaView edges={['top']} />
-      <KeyboardAvoidingView
-        behavior={isIos ? 'padding' : undefined}
-        style={GlobalStyles.flex}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={GlobalStyles.flexGrow}>
+      <SafeAreaView className="flex-1" edges={['top', 'bottom']}>
+        <KeyboardAvoidScrollView>
           <View className="flex-1 items-center py-12 px-6">
             <FastImage
               source={images.reactNativeImg}
@@ -89,20 +70,13 @@ const Login = () => {
                 <Text className="text-text16 font-Heebo-Regular text-black100 pb-3">
                   Select Vehicle
                 </Text>
-                <Dropdown
-                  style={styles.dropdown}
-                  placeholderStyle={styles.placeholderStyle}
-                  selectedTextStyle={styles.selectedTextStyle}
-                  data={data}
-                  search
-                  maxHeight={300}
-                  labelField="label"
-                  valueField="value"
-                  placeholder="Select Vehicle ID"
-                  searchPlaceholder="Search..."
+                <DropdownInput
+                  data={dropdownData}
                   value={vehicleId}
-                  onChange={onChangeVehicleId}
-                  renderRightIcon={() => <DownArrow />}
+                  placeholder={'Select Vehicle ID'}
+                  onChangeSelect={onChangeVehicleId}
+                  dropdownStyle={{height: ms(54)}}
+                  placeholderStyle={{color: colors.gray100}}
                 />
 
                 <Text className="text-text16 font-Heebo-Regular text-black100 pb-2 pt-6">
@@ -112,26 +86,25 @@ const Login = () => {
                   placeholder="Route ID"
                   value={routeId}
                   onChangeText={onChangeRouteId}
-                  placeholderTextColor={colors.gray80}
-                  style={{height: ms(54)}}
-                  className="text-text16 font-Heebo-Regular text-black90 px-6 border border-gray90 rounded-lg overflow-hidden"
                 />
                 <Text className="text-text16 font-Heebo-Regular text-black100 pb-2 pt-6">
                   Password
                 </Text>
+
                 <CustomInput
                   value={password}
                   placeholder="Enter Password"
                   onChangeText={onChangePassword}
                   secureTextEntry={isSecure}
                   onPressRight={onPressEyeIcon}
-                  containerStyle={{}}
                   rightSource={<ShowPassword />}
                 />
                 {isPasswordError && (
                   <View className="flex-row items-center pt-2">
                     <ErrorIcon />
-                    <Text className="pl-2 text-red100 text-text14 font-Heebo-Regular">
+                    <Text
+                      style={{color: colors.red100}}
+                      className="pl-2 text-text14 font-Heebo-Regular">
                       {passwordError}
                     </Text>
                   </View>
@@ -148,9 +121,8 @@ const Login = () => {
               </View>
             </View>
           </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-      <SafeAreaView edges={['bottom']} />
+        </KeyboardAvoidScrollView>
+      </SafeAreaView>
     </View>
   );
 };
@@ -161,25 +133,5 @@ const styles = StyleSheet.create({
   logoStyle: {
     width: ms(80),
     height: ms(80),
-  },
-  dropdown: {
-    height: ms(54),
-    borderColor: colors.gray90,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: ms(20),
-  },
-  placeholderStyle: {
-    fontSize: ms(16),
-    color: colors.gray100,
-    fontFamily: fontFamily.Heebo_400,
-  },
-  selectedTextStyle: {
-    fontSize: ms(16),
-    color: colors.black90,
-    fontFamily: fontFamily.Heebo_400,
-  },
-  routeInputStyle: {
-    height: ms(54),
   },
 });

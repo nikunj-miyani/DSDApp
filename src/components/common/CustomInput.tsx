@@ -13,7 +13,7 @@ import {ms} from 'react-native-size-matters';
 import {colors} from '../../utils/Colors';
 import {fontFamily} from '../../utils/Fonts';
 
-interface CustomInputProps {
+interface Props {
   value?: string;
   placeholder?: string;
   placeholderColor?: string;
@@ -29,7 +29,7 @@ interface CustomInputProps {
   rightSource?: ReactNode;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({
+const CustomInput: React.FC<Props> = ({
   value = '',
   placeholder = '',
   placeholderColor = colors.gray80,

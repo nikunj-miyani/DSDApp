@@ -1,6 +1,7 @@
 export const colors = {
   white: '#fff',
   black: '#000',
+  backDrop: 'rgba(0, 0, 0, 0.5)',
 
   blue100: '#0560FD',
   black100: '#222222',
@@ -8,5 +9,15 @@ export const colors = {
   gray100: '#6E6E6E',
   gray90: '#D1CECE',
   gray80: '#C2C2C2',
+  gray70: '#BBBBBB33',
+  gray60: '#E9EAF2',
+  gray50: '#6B6B6B',
+  gray40: '#9292921A',
+  gray30: '#5E5E5E1A',
   red100: '#DA2F58',
+  sky10: '#F1F4FB',
+  sky20: '#F5F9FF',
+  green100: '#2E8025',
+  yellow100: '#FFCF66',
+  powder100: '#00A0DF',
 };

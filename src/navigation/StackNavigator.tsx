@@ -1,122 +1,105 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
+import {
+  Alert,
+  Animated,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import Splash from '../screens/auth/Splash';
 import Login from '../screens/auth/Login';
 import Home from '../screens/home/Home';
-import Splash from '../screens/auth/Splash';
-import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import History from '../screens/history/History';
 import Products from '../screens/products/Products';
 import Settings from '../screens/settings/Settings';
-import {useNavigation} from '@react-navigation/native';
-import {TouchableOpacity} from 'react-native';
+import {
+  CameraIcon,
+  HistoryIcon,
+  HomeActive,
+  ProductsIcon,
+  SettingsIcon,
+} from '../utils/Svgs';
+import {ms} from 'react-native-size-matters';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {colors} from '../utils/Colors';
+import {bottomBarHeight} from '../utils/Constant';
+import SalesPlan from '../screens/home/SalesPlan';
+import LoadInventory from '../screens/home/LoadInventory';
+import LoadContainers from '../screens/home/LoadContainers';
+import Inspections from '../screens/home/Inspections';
+import MessageBoard from '../screens/home/MessageBoard';
 
 const Stack = createStackNavigator();
 
-const HomeTab = () => {
-  const nav = useNavigation();
-  const _renderIcon = (routeName, selectedTab) => {
-    if (routeName == 'Home')
-      return routeName === selectedTab ? (
-        <images.Home2Active />
-      ) : (
-        <images.Home2InActive />
-      );
-    else if (routeName == 'Gallery')
-      return routeName === selectedTab ? (
-        <images.GalleryInactive />
-      ) : (
-        <images.GalleryActive />
-      );
-    else if (routeName == 'LeaderBoard')
-      return routeName === selectedTab ? (
-        <images.TrophyActive />
-      ) : (
-        <images.TrophyInactive />
-      );
-    else if (routeName == 'Profile')
-      return routeName === selectedTab ? (
-        <images.ProfileActive />
-      ) : (
-        <images.ProfileActive />
-      );
+const BottomTabStack = () => {
+  const {bottom} = useSafeAreaInsets();
+
+  const _renderIcon = (routeName: string, selectedTab: string) => {
+    switch (routeName) {
+      case 'Home':
+        return routeName === selectedTab ? <HomeActive /> : <HomeActive />;
+      case 'History':
+        return routeName === selectedTab ? <HistoryIcon /> : <HistoryIcon />;
+      case 'Products':
+        return routeName === selectedTab ? <ProductsIcon /> : <ProductsIcon />;
+      case 'Settings':
+        return routeName === selectedTab ? <SettingsIcon /> : <SettingsIcon />;
+    }
   };
-  const renderTabBar = ({routeName, selectedTab, navigate}) => {
+
+  const renderTabBar = ({routeName, selectedTab, navigate}: any) => {
     return (
       <TouchableOpacity
         onPress={() => navigate(routeName)}
-        style={styles.tabbarItem}>
+        className="flex-1 justify-center items-center">
         {_renderIcon(routeName, selectedTab)}
+        <Text className="text-text12 font-Heebo-Regular font-normal text-gray70 pt-2">
+          {routeName}
+        </Text>
       </TouchableOpacity>
     );
   };
-  function e(reason: any): PromiseLike<never> {
-    throw new Error('Function not implemented.');
-  }
 
   return (
     <CurvedBottomBar.Navigator
-      screenOptions={{headerShown: false}}
       type="DOWN"
-      style={styles.bottomBar}
+      tabBar={renderTabBar}
+      style={[styles.bottomBar, {paddingBottom: bottom}]}
       shadowStyle={styles.shawdow}
-      height={60}
-      circleWidth={60}
-      // bgColor="transparent"
-      bgColor="#c2d6e1"
-      initialRouteName="home"
-      // renderCircle={({selectedTab, navigate}) => (
-      //   <Animated.View style={styles.btnCircleUp}>
-      //     <TouchableOpacity
-      //       style={styles.button}
-      //       onPress={async () => {
-      //         try {
-      //           const granted = await PermissionsAndroid.request(
-      //             PermissionsAndroid.PERMISSIONS.CAMERA,
-      //           );
-      //           if ((await granted) == PermissionsAndroid.RESULTS.GRANTED) {
-      //             console.log('granted');
-      //             const result = await launchCamera({mediaType: 'photo'});
-      //             console.log('i am from lauch camera', result);
-      //             nav.navigate(ROUTES.pageNameForm, {
-      //               image: {path: result.assets[0].uri, type: 'image'},
-      //             });
-      //           } else {
-      //             console.log('not granted');
-      //           }
-      //           console.log('this is in the naviagator');
-
-      //           // ImageCropPicker.openCamera({mediaType: 'any'})
-      //           //   .then(img => {
-      //           //     console.log('this an image', img);
-      //           //     nav.navigate(ROUTES.pageNameForm, {
-      //           //       image: {path: img.path, type: 'image'},
-      //           //     });
-      //           //   })
-      //           //   .catch(e => console.log('error in camera', e));
-      //         } catch (e) {
-      //           console.log('error in navigator', e);
-      //         }
-      //       }}>
-      //       <images.camera />
-      //     </TouchableOpacity>
-      //   </Animated.View>
-      // )}
-      tabBar={renderTabBar}>
+      height={bottomBarHeight}
+      circleWidth={ms(60)}
+      bgColor={colors.white}
+      screenOptions={{headerShown: false}}
+      initialRouteName="Home"
+      // borderTopLeftRight
+      renderCircle={({selectedTab, navigate}) => (
+        <Animated.View
+          className={'items-center justify-center'}
+          style={styles.btnCircleUp}>
+          <TouchableOpacity
+            className="flex-1 justify-center"
+            onPress={() => Alert.alert('Click Action')}>
+            <CameraIcon />
+          </TouchableOpacity>
+        </Animated.View>
+      )}>
       <CurvedBottomBar.Screen name="Home" position="LEFT" component={Home} />
       <CurvedBottomBar.Screen
         name="History"
+        position="LEFT"
         component={History}
-        position="RIGHT"
       />
       <CurvedBottomBar.Screen
         name="Products"
-        position="LEFT"
+        position="RIGHT"
         component={Products}
       />
       <CurvedBottomBar.Screen
         name="Settings"
-        component={Settings}
         position="RIGHT"
+        component={Settings}
       />
     </CurvedBottomBar.Navigator>
   );
@@ -125,13 +108,49 @@ const HomeTab = () => {
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Main"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Home" component={HomeTab} />
+      <Stack.Screen name="Main" component={BottomTabStack} />
+      <Stack.Screen name="SalesPlan" component={SalesPlan} />
+      <Stack.Screen name="LoadInventory" component={LoadInventory} />
+      <Stack.Screen name="LoadContainers" component={LoadContainers} />
+      <Stack.Screen name="Inspections" component={Inspections} />
+      <Stack.Screen name="MessageBoard" component={MessageBoard} />
     </Stack.Navigator>
   );
 };
 
 export default StackNavigator;
+
+const styles = StyleSheet.create({
+  shawdow: {
+    shadowColor: colors.gray70,
+    shadowOffset: {
+      width: 0,
+      height: -5,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    // elevation: 50,
+  },
+  bottomBar: {
+    backgroundColor: colors.white,
+  },
+  btnCircleUp: {
+    width: ms(60),
+    height: ms(60),
+    borderRadius: 100,
+    backgroundColor: colors.blue100,
+    bottom: ms(22),
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1,
+  },
+});
