@@ -128,7 +128,7 @@ const SalesPlanDetail = () => {
 
   return (
     <View className="flex-1 bg-white">
-      <SafeAreaView edges={['top']} className="bg-[#0560FD]" />
+      <SafeAreaView edges={['top']} className="bg-blue100" />
 
       <Header
         title="O Marche IGA X-Press"
@@ -241,6 +241,7 @@ const SalesPlanDetail = () => {
               horizontal
               showsVerticalScrollIndicator={false}
               data={DATA}
+              keyExtractor={item => item?.id.toString()}
               renderItem={renderImageItem}
               ItemSeparatorComponent={itemSeparatorComponent}
             />

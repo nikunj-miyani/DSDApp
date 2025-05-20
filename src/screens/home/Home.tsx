@@ -70,6 +70,7 @@ const Home = () => {
               data={homeData}
               numColumns={2}
               scrollEnabled={false}
+              keyExtractor={item => item?.id.toString()}
               renderItem={renderTripItems}
               ListHeaderComponent={listHeaderComponent}
               ListFooterComponent={listFooterComponent}

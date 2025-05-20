@@ -37,6 +37,10 @@ import RightArrow from '../assets/images/home/RightArrow.svg';
 import CameraBlue from '../assets/images/home/CameraBlue.svg';
 import LocationPinWhite from '../assets/images/home/LocationPinWhite.svg';
 import PrinterIcon from '../assets/images/home/PrinterIcon.svg';
+import FilterIcon from '../assets/images/home/FilterIcon.svg';
+import PlusIcon from '../assets/images/home/PlusIcon.svg';
+import MainMenuIcon from '../assets/images/home/MainMenuIcon.svg';
+import ScannerIcon from '../assets/images/home/ScannerIcon.svg';
 
 export {
   DownArrow,
@@ -78,4 +82,8 @@ export {
   CameraBlue,
   LocationPinWhite,
   PrinterIcon,
+  FilterIcon,
+  PlusIcon,
+  MainMenuIcon,
+  ScannerIcon,
 };

@@ -1,4 +1,5 @@
 import {navigate} from '../navigation/NavigationServices';
+import {images} from './Images';
 import {
   Containers,
   Inspections,
@@ -64,5 +65,50 @@ export const orderFilterData = [
   {
     id: 3,
     title: 'Pending',
+  },
+];
+
+export const productItems = [
+  {
+    id: 1,
+    title: 'CADBURY Caramilk 460ml',
+    productId: '9300675016902',
+    qty: 20,
+    img: images.saleDummyImg,
+  },
+  {
+    id: 2,
+    title: 'CADBURY Caramilk 460ml',
+    productId: '9300675016902',
+    qty: 16,
+    img: images.saleDummyImg,
+  },
+  {
+    id: 3,
+    title: 'CADBURY Caramilk 460ml',
+    productId: '9300675016902',
+    qty: 40,
+    img: images.saleDummyImg,
+  },
+  {
+    id: 4,
+    title: 'CADBURY Caramilk 460ml',
+    productId: '9300675016902',
+    qty: 12,
+    img: images.saleDummyImg,
+  },
+  {
+    id: 5,
+    title: 'CADBURY Caramilk 460ml',
+    productId: '9300675016902',
+    qty: 33,
+    img: images.saleDummyImg,
+  },
+  {
+    id: 6,
+    title: 'CADBURY Caramilk 460ml',
+    productId: '9300675016902',
+    qty: 22,
+    img: images.saleDummyImg,
   },
 ];

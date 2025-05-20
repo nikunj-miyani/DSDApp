@@ -22,6 +22,8 @@ interface Props {
   rightSource?: React.ReactNode;
   titleStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<any>;
+  onPressLeftSource?: () => void;
+  onPressRightSource?: () => void;
 }
 
 const Header: React.FC<Props> = ({
@@ -32,6 +34,8 @@ const Header: React.FC<Props> = ({
   leftSource,
   rightSource,
   containerStyle,
+  onPressLeftSource,
+  onPressRightSource,
 }) => {
   const {goBack} = useNavigation();
 
@@ -48,7 +52,9 @@ const Header: React.FC<Props> = ({
           </TouchableOpacity>
         )}
         {leftSource && (
-          <TouchableOpacity className="w-full h-full items-center justify-center">
+          <TouchableOpacity
+            onPress={onPressLeftSource}
+            className="w-full h-full items-center justify-center">
             {leftSource}
           </TouchableOpacity>
         )}
@@ -75,7 +81,9 @@ const Header: React.FC<Props> = ({
 
       <View className="absolute right-5 h-full min-w-[40px] z-50 items-center justify-center">
         {rightSource && (
-          <TouchableOpacity className="w-full h-full items-center justify-center">
+          <TouchableOpacity
+            onPress={onPressRightSource}
+            className="w-full h-full items-center justify-center">
             {rightSource}
           </TouchableOpacity>
         )}

@@ -10,6 +10,7 @@ import {
 import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {RightArrow} from '../../../utils/Svgs';
+import {useNavigation} from '@react-navigation/native';
 
 const ActivityItem = ({title, rightText}: any) => {
   return (
@@ -32,6 +33,8 @@ const ActivityItem = ({title, rightText}: any) => {
 };
 
 const StoreActivity = () => {
+  const {navigate} = useNavigation<any>();
+
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [endLocation, setEndLocation] = useState('Delivery from Vechicle');
   const [showPrinterModal, setShowPrinterModal] = useState(false);
@@ -47,6 +50,7 @@ const StoreActivity = () => {
   const onPressLocationSave = (text: string) => {
     setEndLocation(text);
     onCloseLocationModal();
+    navigate('NewSaleItem');
   };
 
   const onPressComplete = () => {
@@ -63,7 +67,7 @@ const StoreActivity = () => {
 
   return (
     <View className="flex-1 bg-white">
-      <SafeAreaView edges={['top']} className="bg-[#0560FD]" />
+      <SafeAreaView edges={['top']} className="bg-blue100" />
 
       <Header
         title="In Store Activites"

@@ -156,7 +156,7 @@ const SalesPlan = () => {
 
   return (
     <View className="flex-1 bg-white">
-      <SafeAreaView edges={['top']} className="bg-[#0560FD]" />
+      <SafeAreaView edges={['top']} className="bg-blue100" />
 
       <Header
         title="Sales Plan"
@@ -214,7 +214,7 @@ const SalesPlan = () => {
           data={DATA}
           renderItem={renderDataItem}
           showsVerticalScrollIndicator={false}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item?.id.toString()}
           className="px-[18px]"
           ListHeaderComponent={<View className="h-[18px]" />}
           ItemSeparatorComponent={() => <View className="h-[18px]" />}
