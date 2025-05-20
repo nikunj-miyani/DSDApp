@@ -25,6 +25,18 @@ import VisitTime from '../assets/images/home/VisitTime.svg';
 import CrossIcon from '../assets/images/home/CrossIcon.svg';
 import UserIcon from '../assets/images/home/UserIcon.svg';
 import OrderIcon from '../assets/images/home/OrderIcon.svg';
+import EditPencil from '../assets/images/common/EditPencil.svg';
+import HouseIcon from '../assets/images/home/HouseIcon.svg';
+import DocumentCross from '../assets/images/home/DocumentCross.svg';
+import LocationPin from '../assets/images/home/LocationPin.svg';
+import PersonIcon from '../assets/images/home/PersonIcon.svg';
+import CallIcon from '../assets/images/home/CallIcon.svg';
+import GraphIcon from '../assets/images/home/GraphIcon.svg';
+import MultiUserIcon from '../assets/images/home/MultiUserIcon.svg';
+import RightArrow from '../assets/images/home/RightArrow.svg';
+import CameraBlue from '../assets/images/home/CameraBlue.svg';
+import LocationPinWhite from '../assets/images/home/LocationPinWhite.svg';
+import PrinterIcon from '../assets/images/home/PrinterIcon.svg';
 
 export {
   DownArrow,
@@ -54,4 +66,16 @@ export {
   CrossIcon,
   UserIcon,
   OrderIcon,
+  EditPencil,
+  HouseIcon,
+  DocumentCross,
+  LocationPin,
+  PersonIcon,
+  CallIcon,
+  GraphIcon,
+  MultiUserIcon,
+  RightArrow,
+  CameraBlue,
+  LocationPinWhite,
+  PrinterIcon,
 };

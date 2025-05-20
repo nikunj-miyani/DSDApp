@@ -1,14 +1,13 @@
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors} from '../../utils/Colors';
+import {colors} from '../../../utils/Colors';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   Header,
   LocationChangeModal,
-  NoSaleReasonModal,
   SalesPlanItemModal,
   SelectDayModal,
-} from '../../components';
+} from '../../../components';
 import {ms} from 'react-native-size-matters';
 import {
   DirectionIcon,
@@ -19,8 +18,9 @@ import {
   ShopIcon,
   SortIcon,
   VisitTime,
-} from '../../utils/Svgs';
-import {orderFilterData} from '../../utils/ConstantData';
+} from '../../../utils/Svgs';
+import {orderFilterData} from '../../../utils/ConstantData';
+import {useNavigation} from '@react-navigation/native';
 
 const DATA = Array.from({length: 20}, (_, i) => ({
   id: i.toString(),
@@ -28,6 +28,8 @@ const DATA = Array.from({length: 20}, (_, i) => ({
 }));
 
 const SalesPlan = () => {
+  const {navigate} = useNavigation<any>();
+
   const [day, setDay] = useState('Today');
   const [filterData, setFilterData] = useState(orderFilterData);
   const [showSalesItemModal, setShowSalesItemModal] = useState(false);
@@ -42,7 +44,7 @@ const SalesPlan = () => {
     setFilterData(updatedData);
   };
 
-  const onPressDataItem = () => {
+  const onPressDataItemDots = () => {
     setShowSalesItemModal(true);
   };
 
@@ -69,6 +71,10 @@ const SalesPlan = () => {
   const onPressDaySave = (item: any) => {
     setDay(item?.label);
     onCloseDayModal();
+  };
+
+  const onPressDataItem = () => {
+    navigate('SalesPlanDetail');
   };
 
   const renderFilterItem = ({item}: any) => {
@@ -104,6 +110,7 @@ const SalesPlan = () => {
   const renderDataItem = () => {
     return (
       <TouchableOpacity
+        onPress={onPressDataItem}
         className="rounded-[8px] bg-white shadow-md"
         style={styles.shadowStyle}>
         <View className="flex-row items-center rounded-t-[8px] py-[10px] pl-[16px] bg-sky20">
@@ -112,7 +119,7 @@ const SalesPlan = () => {
             O Marche IGA X-Press
           </Text>
           <TouchableOpacity
-            onPress={onPressDataItem}
+            onPress={onPressDataItemDots}
             className="w-[36px] h-[36px] items-center justify-center">
             <MenuDots />
           </TouchableOpacity>

@@ -25,11 +25,13 @@ import {ms} from 'react-native-size-matters';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {colors} from '../utils/Colors';
 import {bottomBarHeight} from '../utils/Constant';
-import SalesPlan from '../screens/home/SalesPlan';
+import SalesPlan from '../screens/home/salesPlan/SalesPlan';
 import LoadInventory from '../screens/home/LoadInventory';
 import LoadContainers from '../screens/home/LoadContainers';
 import Inspections from '../screens/home/Inspections';
 import MessageBoard from '../screens/home/MessageBoard';
+import SalesPlanDetail from '../screens/home/salesPlan/SalesPlanDetail';
+import StoreActivity from '../screens/home/salesPlan/StoreActivity';
 
 const Stack = createStackNavigator();
 
@@ -74,7 +76,7 @@ const BottomTabStack = () => {
       screenOptions={{headerShown: false}}
       initialRouteName="Home"
       // borderTopLeftRight
-      renderCircle={({selectedTab, navigate}) => (
+      renderCircle={() => (
         <Animated.View
           className={'items-center justify-center'}
           style={styles.btnCircleUp}>
@@ -108,12 +110,14 @@ const BottomTabStack = () => {
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="StoreActivity"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Main" component={BottomTabStack} />
       <Stack.Screen name="SalesPlan" component={SalesPlan} />
+      <Stack.Screen name="SalesPlanDetail" component={SalesPlanDetail} />
+      <Stack.Screen name="StoreActivity" component={StoreActivity} />
       <Stack.Screen name="LoadInventory" component={LoadInventory} />
       <Stack.Screen name="LoadContainers" component={LoadContainers} />
       <Stack.Screen name="Inspections" component={Inspections} />
@@ -133,7 +137,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 5,
-    // elevation: 50,
   },
   bottomBar: {
     backgroundColor: colors.white,
@@ -144,7 +147,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: colors.blue100,
     bottom: ms(22),
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,

@@ -4,7 +4,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import FastImage from 'react-native-fast-image';
 import {ms} from 'react-native-size-matters';
 import {images} from '../../utils/Images';
-import {fontFamily} from '../../utils/Fonts';
 import {colors} from '../../utils/Colors';
 import {
   CustomInput,
@@ -14,7 +13,7 @@ import {
 } from '../../components';
 import {Button} from 'react-native-ui-lib';
 import {useNavigation} from '@react-navigation/native';
-import {DownArrow, ErrorIcon, ShowPassword} from '../../utils/Svgs';
+import {ErrorIcon, ShowPassword} from '../../utils/Svgs';
 import {dropdownData} from '../../utils/ConstantData';
 
 const Login = () => {

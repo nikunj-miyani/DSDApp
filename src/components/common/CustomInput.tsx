@@ -1,17 +1,13 @@
+import React, {ReactNode} from 'react';
 import {
-  StyleProp,
-  StyleSheet,
   TextInput,
   TextInputProps,
-  TextStyle,
   TouchableOpacity,
   View,
+  StyleProp,
   ViewStyle,
+  TextStyle,
 } from 'react-native';
-import React, {ReactNode} from 'react';
-import {ms} from 'react-native-size-matters';
-import {colors} from '../../utils/Colors';
-import {fontFamily} from '../../utils/Fonts';
 
 interface Props {
   value?: string;
@@ -32,7 +28,7 @@ interface Props {
 const CustomInput: React.FC<Props> = ({
   value = '',
   placeholder = '',
-  placeholderColor = colors.gray80,
+  placeholderColor = '#B0B0B0',
   keyboardType = 'default',
   secureTextEntry = false,
   multiline = false,
@@ -45,9 +41,12 @@ const CustomInput: React.FC<Props> = ({
   onPressRight,
 }) => {
   return (
-    <View style={[styles.containerStyle, containerStyle]}>
+    <View
+      className="h-[54px] border border-gray90 rounded-[8px] overflow-hidden flex-row items-center"
+      style={containerStyle}>
       <TextInput
-        style={[styles.inputStyle, inputStyle]}
+        className="flex-1 h-full pl-[20px] text-[16px] text-black90 font-heebo400"
+        style={inputStyle}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
@@ -60,7 +59,9 @@ const CustomInput: React.FC<Props> = ({
       />
 
       {rightSource && (
-        <TouchableOpacity onPress={onPressRight} style={styles.rightContainer}>
+        <TouchableOpacity
+          onPress={onPressRight}
+          className="h-full w-[54px] items-center justify-center">
           {rightSource}
         </TouchableOpacity>
       )}
@@ -69,29 +70,3 @@ const CustomInput: React.FC<Props> = ({
 };
 
 export default CustomInput;
-
-const styles = StyleSheet.create({
-  containerStyle: {
-    height: ms(54),
-    borderWidth: 1,
-    borderColor: colors.gray90,
-    borderRadius: 8,
-    overflow: 'hidden',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  inputStyle: {
-    flex: 1,
-    height: '100%',
-    paddingLeft: ms(20),
-    fontSize: ms(16),
-    fontFamily: fontFamily.Heebo_400,
-    color: colors.black90,
-  },
-  rightContainer: {
-    height: '100%',
-    width: ms(54),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

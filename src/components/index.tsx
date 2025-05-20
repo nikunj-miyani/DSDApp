@@ -7,6 +7,10 @@ import LocationChangeModal from './home/LocationChangeModal';
 import DropdownInput from './common/DropdownInput';
 import SelectDayModal from './home/SelectDayModal';
 import NoSaleReasonModal from './home/NoSaleReasonModal';
+import SaleStoreDetailModal from './home/SaleStoreDetailModal';
+import CustomButton from './common/CustomButton';
+import EndingLocationModal from './home/EndingLocationModal';
+import ConfirmPrinterModal from './home/ConfirmPrinterModal';
 
 export {
   CustomInput,
@@ -18,4 +22,8 @@ export {
   DropdownInput,
   SelectDayModal,
   NoSaleReasonModal,
+  SaleStoreDetailModal,
+  CustomButton,
+  EndingLocationModal,
+  ConfirmPrinterModal,
 };

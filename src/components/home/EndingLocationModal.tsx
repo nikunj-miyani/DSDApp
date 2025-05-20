@@ -3,32 +3,28 @@ import React, {useState} from 'react';
 import Modal from 'react-native-modal';
 import {colors} from '../../utils/Colors';
 import {CrossIcon} from '../../utils/Svgs';
-import {ms} from 'react-native-size-matters';
+import DropdownInput from '../common/DropdownInput';
 import {dropdownData} from '../../utils/ConstantData';
 import {Button} from 'react-native-ui-lib';
-import DropdownInput from '../common/DropdownInput';
+import {ms} from 'react-native-size-matters';
 
-type LocationChangeModalProps = {
+type EndingLocationModalProps = {
   isVisible: boolean;
+  value: string;
   onBackdropPress: () => void;
+  onPressSave: (selectedDay: string) => void;
 };
 
-const LocationChangeModal = ({
+const EndingLocationModal = ({
   isVisible,
+  value,
   onBackdropPress,
-}: LocationChangeModalProps) => {
-  const [startPosition, setStartPosition] = useState('');
-  const [endPosition, setEndPosition] = useState('');
+  onPressSave,
+}: EndingLocationModalProps) => {
+  const [selectedDay, setSelectedDay] = useState('');
 
-  const onChangeStartPosition = (text: string) => {
-    setStartPosition(text);
-  };
-  const onChangeEndPosition = (text: string) => {
-    setEndPosition(text);
-  };
-
-  const onPressOptimise = () => {
-    onBackdropPress();
+  const onChangeDaySelect = (text: string) => {
+    setSelectedDay(text);
   };
 
   return (
@@ -41,9 +37,9 @@ const LocationChangeModal = ({
       backdropColor={colors.backDrop}
       style={styles.modalStyle}>
       <View className="bg-white rounded-3xl px-5 py-8">
-        <View className="flex-row items-center pb-[12px]">
+        <View className="flex-row items-center pb-[27px]">
           <Text className="flex-1 text-[18px] font-Heebo-Bold font-bold text-black90">
-            Optimization Locations
+            Select Ending Location
           </Text>
           <TouchableOpacity
             onPress={onBackdropPress}
@@ -53,33 +49,19 @@ const LocationChangeModal = ({
         </View>
 
         <View>
-          <Text className="pb-2 text-text14 font-Heebo-Regular font-normal text-gray20">
-            Starting Location
-          </Text>
           <DropdownInput
             data={dropdownData}
-            value={startPosition}
-            placeholder={'My Current Location'}
-            onChangeSelect={onChangeStartPosition}
-          />
-
-          <Text className="pt-5 pb-3 text-text14 font-Heebo-Regular font-normal text-gray20">
-            Ending Location
-          </Text>
-
-          <DropdownInput
-            data={dropdownData}
-            value={endPosition}
-            placeholder={'New Cold'}
-            onChangeSelect={onChangeEndPosition}
+            value={value}
+            placeholder={'Delivery from Vechicle'}
+            onChangeSelect={onChangeDaySelect}
           />
 
           <Button
-            label={'Optimise'}
+            label={'Save'}
             style={{height: ms(54)}}
             borderRadius={8}
             text65R
-            onPress={onPressOptimise}
+            onPress={() => onPressSave(selectedDay)}
             className="mt-10 bg-blue100 text-white"
           />
         </View>
@@ -88,7 +70,7 @@ const LocationChangeModal = ({
   );
 };
 
-export default LocationChangeModal;
+export default EndingLocationModal;
 
 const styles = StyleSheet.create({
   modalStyle: {
