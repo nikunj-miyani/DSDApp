@@ -115,7 +115,7 @@ const LoadTruck = () => {
               value={product}
               placeholder="Product ID or Name"
               onChangeText={onChangeProduct}
-              placeholderColor={colors.gray10}
+              placeholderColor={colors.gray90}
             />
             <CustomInput
               containerStyle={{width: '28%', borderRadius: 4, height: ms(41)}}
@@ -123,7 +123,7 @@ const LoadTruck = () => {
               placeholder="QTY"
               keyboardType="numeric"
               onChangeText={onChangeQuantity}
-              placeholderColor={colors.gray10}
+              placeholderColor={colors.gray90}
             />
           </View>
 

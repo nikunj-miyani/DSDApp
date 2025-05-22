@@ -20,9 +20,11 @@ interface Props {
   editable?: boolean;
   onChangeText?: (text: string) => void;
   onPressRight?: () => void;
+  onPressLeft?: () => void;
   inputStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   rightSource?: ReactNode;
+  leftSource?: ReactNode;
 }
 
 const CustomInput: React.FC<Props> = ({
@@ -39,11 +41,20 @@ const CustomInput: React.FC<Props> = ({
   containerStyle,
   rightSource,
   onPressRight,
+  leftSource,
+  onPressLeft,
 }) => {
   return (
     <View
       className="h-[54px] border border-gray90 rounded-[8px] overflow-hidden flex-row items-center"
       style={containerStyle}>
+      {leftSource && (
+        <TouchableOpacity
+          onPress={onPressLeft}
+          className="h-full w-[54px] items-center justify-center">
+          {leftSource}
+        </TouchableOpacity>
+      )}
       <TextInput
         className="flex-1 h-full pl-[20px] text-[16px] text-black90 font-heebo400"
         style={inputStyle}

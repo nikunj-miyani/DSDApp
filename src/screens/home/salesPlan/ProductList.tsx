@@ -1,14 +1,20 @@
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Header} from '../../../components';
+import {CustomInput, Header} from '../../../components';
 import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {productItems} from '../../../utils/ConstantData';
 import FastImage from 'react-native-fast-image';
-import {PlusIcon} from '../../../utils/Svgs';
+import {FilterIcon, GraySearch, PlusIcon, SortIcon} from '../../../utils/Svgs';
 
-const SearchScreen = () => {
+const ProductList = () => {
+  const [search, setSearch] = useState('');
+
+  const onChangeSearch = (text: string) => {
+    setSearch(text);
+  };
+
   const renderItem = ({item}: any) => {
     return (
       <View
@@ -60,11 +66,32 @@ const SearchScreen = () => {
       <SafeAreaView edges={['top']} className="bg-blue100" />
 
       <Header
-        title="Search"
+        title="Product List"
         showBack
         titleStyle={styles.headerTitle}
         containerStyle={styles.headerContainer}
       />
+
+      <View className="flex-row items-center pt-5 px-6 gap-4">
+        <CustomInput
+          containerStyle={{flex: 1, borderRadius: 4, height: ms(41)}}
+          value={search}
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          placeholderColor={colors.gray90}
+          leftSource={<GraySearch />}
+          inputStyle={{paddingLeft: 0}}
+        />
+
+        <View className="flex-row items-center gap-6">
+          <TouchableOpacity>
+            <SortIcon />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <FilterIcon />
+          </TouchableOpacity>
+        </View>
+      </View>
 
       <FlatList
         data={productItems}
@@ -80,7 +107,7 @@ const SearchScreen = () => {
   );
 };
 
-export default SearchScreen;
+export default ProductList;
 
 const styles = StyleSheet.create({
   headerTitle: {

@@ -41,6 +41,7 @@ import FilterIcon from '../assets/images/home/FilterIcon.svg';
 import PlusIcon from '../assets/images/home/PlusIcon.svg';
 import MainMenuIcon from '../assets/images/home/MainMenuIcon.svg';
 import ScannerIcon from '../assets/images/home/ScannerIcon.svg';
+import GraySearch from '../assets/images/home/GraySearch.svg';
 
 export {
   DownArrow,
@@ -86,4 +87,5 @@ export {
   PlusIcon,
   MainMenuIcon,
   ScannerIcon,
+  GraySearch,
 };
