@@ -5,6 +5,7 @@ import {colors} from '../../utils/Colors';
 import {ms} from 'react-native-size-matters';
 import {CrossIcon, OrderIcon, UserIcon} from '../../utils/Svgs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
 
 type SalesPlanItemModalProps = {
   isVisible: boolean;
@@ -16,6 +17,12 @@ const SalesPlanItemModal: React.FC<SalesPlanItemModalProps> = ({
   onBackdropPress,
 }) => {
   const {bottom} = useSafeAreaInsets();
+  const {navigate} = useNavigation<any>();
+
+  const onPressCustomerDetails = () => {
+    onBackdropPress();
+    navigate('SalesPlanDetail');
+  };
 
   return (
     <Modal
@@ -42,7 +49,9 @@ const SalesPlanItemModal: React.FC<SalesPlanItemModalProps> = ({
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity className="flex-row items-center py-[10px] gap-5">
+        <TouchableOpacity
+          className="flex-row items-center py-[10px] gap-5"
+          onPress={onPressCustomerDetails}>
           <UserIcon width={ms(18)} height={ms(18)} />
           <Text className="text-[16px] font-Heebo-Regular font-normal text-black90">
             Customer Details

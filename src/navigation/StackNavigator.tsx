@@ -113,7 +113,7 @@ const BottomTabStack = () => {
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="LoadTruck"
+      // initialRouteName="LoadTruck"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
