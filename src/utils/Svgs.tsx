@@ -42,6 +42,7 @@ import PlusIcon from '../assets/images/home/PlusIcon.svg';
 import MainMenuIcon from '../assets/images/home/MainMenuIcon.svg';
 import ScannerIcon from '../assets/images/home/ScannerIcon.svg';
 import GraySearch from '../assets/images/home/GraySearch.svg';
+import TruckWithBoxs from '../assets/images/home/TruckWithBoxs.svg';
 
 export {
   DownArrow,
@@ -88,4 +89,5 @@ export {
   MainMenuIcon,
   ScannerIcon,
   GraySearch,
+  TruckWithBoxs,
 };

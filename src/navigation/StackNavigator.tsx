@@ -36,6 +36,7 @@ import NewSaleItem from '../screens/home/salesPlan/NewSaleItem';
 import LoadTruck from '../screens/home/salesPlan/LoadTruck';
 import SearchScreen from '../screens/home/salesPlan/SearchScreen';
 import ProductList from '../screens/home/salesPlan/ProductList';
+import FinalLoadTruck from '../screens/home/salesPlan/FinalLoadTruck';
 
 const Stack = createStackNavigator();
 
@@ -114,7 +115,7 @@ const BottomTabStack = () => {
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="ProductList"
+      initialRouteName="FinalLoadTruck"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
@@ -127,6 +128,7 @@ const StackNavigator = () => {
       <Stack.Screen name="LoadTruck" component={LoadTruck} />
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="ProductList" component={ProductList} />
+      <Stack.Screen name="FinalLoadTruck" component={FinalLoadTruck} />
 
       <Stack.Screen name="LoadInventory" component={LoadInventory} />
       <Stack.Screen name="LoadContainers" component={LoadContainers} />
