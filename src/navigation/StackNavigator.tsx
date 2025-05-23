@@ -21,10 +21,9 @@ import {
   ProductsIcon,
   SettingsIcon,
 } from '../utils/Svgs';
-import {ms} from 'react-native-size-matters';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {colors} from '../utils/Colors';
-import {bottomBarHeight} from '../utils/Constant';
+import {bottomBarHeight, WINDOW_HEIGHT} from '../utils/Constant';
 import SalesPlan from '../screens/home/salesPlan/SalesPlan';
 import LoadInventory from '../screens/home/LoadInventory';
 import LoadContainers from '../screens/home/LoadContainers';
@@ -76,7 +75,7 @@ const BottomTabStack = () => {
       style={[styles.bottomBar, {paddingBottom: bottom}]}
       shadowStyle={styles.shawdow}
       height={bottomBarHeight}
-      circleWidth={ms(60)}
+      circleWidth={WINDOW_HEIGHT * 0.07}
       bgColor={colors.white}
       screenOptions={{headerShown: false}}
       initialRouteName="Home"
@@ -115,7 +114,7 @@ const BottomTabStack = () => {
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="FinalLoadTruck"
+      initialRouteName="ProductList"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
@@ -154,11 +153,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   btnCircleUp: {
-    width: ms(60),
-    height: ms(60),
+    width: WINDOW_HEIGHT * 0.07,
+    height: WINDOW_HEIGHT * 0.07,
     borderRadius: 100,
     backgroundColor: colors.blue100,
-    bottom: ms(22),
+    bottom: WINDOW_HEIGHT * 0.025,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,

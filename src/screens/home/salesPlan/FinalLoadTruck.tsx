@@ -10,13 +10,13 @@ import {
 import React, {useRef, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {CustomButton, Header} from '../../../components';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {TruckWithBoxs} from '../../../utils/Svgs';
 import {fontFamily} from '../../../utils/Fonts';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import {Circle} from 'react-native-svg';
 import SignatureCanvas from 'react-native-signature-canvas';
+import {WINDOW_WIDTH} from '../../../utils/Constant';
 
 const MIN_TEMP = -50;
 const MAX_TEMP = 10;
@@ -149,8 +149,8 @@ const FinalLoadTruck = () => {
 
         <View className="items-center pt-6">
           <AnimatedCircularProgress
-            size={ms(250)}
-            width={ms(6)}
+            size={WINDOW_WIDTH * 0.66}
+            width={WINDOW_WIDTH * 0.016}
             fill={percent}
             tintColor={colors.blue100}
             backgroundColor={colors.gray70}
@@ -160,7 +160,7 @@ const FinalLoadTruck = () => {
               <Circle
                 cx={center.x}
                 cy={center.y}
-                r={ms(12)}
+                r={WINDOW_WIDTH * 0.032}
                 fill={colors.blue100}
               />
             )}
@@ -227,7 +227,7 @@ const FinalLoadTruck = () => {
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.1066,
     color: colors.white,
   },
   headerContainer: {

@@ -1,12 +1,12 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../utils/Colors';
 import DropdownInput from '../common/DropdownInput';
 import Modal from 'react-native-modal';
 import {CrossIcon} from '../../utils/Svgs';
 import {Button} from 'react-native-ui-lib';
 import {dropdownData} from '../../utils/ConstantData';
+import {WINDOW_HEIGHT} from '../../utils/Constant';
 
 type SelectDayModalProps = {
   isVisible: boolean;
@@ -58,7 +58,7 @@ const SelectDayModal = ({
 
           <Button
             label={'Save'}
-            style={{height: ms(54)}}
+            style={{height: WINDOW_HEIGHT * 0.065}}
             borderRadius={8}
             text65R
             onPress={() => onPressSave(selectedDay)}

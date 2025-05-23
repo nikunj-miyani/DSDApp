@@ -4,8 +4,7 @@ import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Header} from '../../components';
 import {MenuIcon, TripIcon, VicIcon} from '../../utils/Svgs';
 import {homeData} from '../../utils/ConstantData';
-import {ms} from 'react-native-size-matters';
-import {bottomBarHeight} from '../../utils/Constant';
+import {bottomBarHeight, WINDOW_WIDTH} from '../../utils/Constant';
 
 const Home = () => {
   const {bottom} = useSafeAreaInsets();
@@ -27,7 +26,7 @@ const Home = () => {
 
   const listHeaderComponent = <View className="pt-4" />;
   const listFooterComponent = (
-    <View style={{height: bottomBarHeight + bottom + ms(50)}} />
+    <View style={{height: bottomBarHeight + bottom + WINDOW_WIDTH * 0.135}} />
   );
   const itemSeparatorComponent = () => <View className="h-[18px]" />;
 

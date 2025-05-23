@@ -30,11 +30,11 @@ import {
   RightArrow,
   VisitTime,
 } from '../../../utils/Svgs';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../../utils/Images';
 import {useNavigation} from '@react-navigation/native';
+import {WINDOW_HEIGHT, WINDOW_WIDTH} from '../../../utils/Constant';
 
 const DATA = Array.from({length: 2}, (_, i) => ({
   id: i.toString(),
@@ -124,7 +124,9 @@ const SalesPlanDetail = () => {
     );
   };
 
-  const itemSeparatorComponent = () => <View style={{width: ms(20)}} />;
+  const itemSeparatorComponent = () => (
+    <View style={{width: WINDOW_WIDTH * 0.0533}} />
+  );
 
   return (
     <View className="flex-1 bg-white">
@@ -226,10 +228,13 @@ const SalesPlanDetail = () => {
               multiline
               value={deliveryText}
               onChangeText={onChangeDeliveryText}
-              containerStyle={{height: ms(122)}}
+              containerStyle={{height: WINDOW_HEIGHT * 0.15}}
               placeholder="Write Here"
               placeholderColor={colors.gray90}
-              inputStyle={{padding: ms(12), fontSize: ms(14)}}
+              inputStyle={{
+                padding: WINDOW_WIDTH * 0.032,
+                fontSize: WINDOW_WIDTH * 0.0373,
+              }}
             />
           </View>
 
@@ -304,7 +309,7 @@ export default SalesPlanDetail;
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.1066,
     color: colors.white,
   },
   headerContainer: {

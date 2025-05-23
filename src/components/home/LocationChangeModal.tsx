@@ -3,10 +3,10 @@ import React, {useState} from 'react';
 import Modal from 'react-native-modal';
 import {colors} from '../../utils/Colors';
 import {CrossIcon} from '../../utils/Svgs';
-import {ms} from 'react-native-size-matters';
 import {dropdownData} from '../../utils/ConstantData';
 import {Button} from 'react-native-ui-lib';
 import DropdownInput from '../common/DropdownInput';
+import {WINDOW_HEIGHT} from '../../utils/Constant';
 
 type LocationChangeModalProps = {
   isVisible: boolean;
@@ -76,7 +76,7 @@ const LocationChangeModal = ({
 
           <Button
             label={'Optimise'}
-            style={{height: ms(54)}}
+            style={{height: WINDOW_HEIGHT * 0.065}}
             borderRadius={8}
             text65R
             onPress={onPressOptimise}

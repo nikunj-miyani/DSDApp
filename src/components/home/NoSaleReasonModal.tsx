@@ -6,7 +6,7 @@ import {CrossIcon} from '../../utils/Svgs';
 import DropdownInput from '../common/DropdownInput';
 import {dropdownData} from '../../utils/ConstantData';
 import {Button} from 'react-native-ui-lib';
-import {ms} from 'react-native-size-matters';
+import {WINDOW_HEIGHT} from '../../utils/Constant';
 
 type NoSaleReasonModalProps = {
   isVisible: boolean;
@@ -58,7 +58,7 @@ const NoSaleReasonModal = ({
 
           <Button
             label={'Save'}
-            style={{height: ms(54)}}
+            style={{height: WINDOW_HEIGHT * 0.065}}
             borderRadius={8}
             text65R
             onPress={() => onPressSave(selectedDay)}

@@ -1,10 +1,10 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import React from 'react';
 import {Dropdown} from 'react-native-element-dropdown';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../utils/Colors';
 import {fontFamily} from '../../utils/Fonts';
 import {DownArrow} from '../../utils/Svgs';
+import {WINDOW_HEIGHT, WINDOW_WIDTH} from '../../utils/Constant';
 
 type DropdownDataItem = {
   label: string;
@@ -53,20 +53,20 @@ export default DropdownInput;
 
 const styles = StyleSheet.create({
   dropdownStyle: {
-    height: ms(50),
+    height: WINDOW_HEIGHT * 0.06,
     borderColor: colors.gray90,
     borderWidth: 1,
     borderRadius: 8,
-    paddingHorizontal: ms(20),
+    paddingHorizontal: WINDOW_WIDTH * 0.05,
     backgroundColor: colors.white,
   },
   placeholderStyle: {
-    fontSize: ms(16),
+    fontSize: WINDOW_WIDTH * 0.045,
     color: colors.black90,
     fontFamily: fontFamily.Heebo_400,
   },
   selectedTextStyle: {
-    fontSize: ms(16),
+    fontSize: WINDOW_WIDTH * 0.045,
     color: colors.black90,
     fontFamily: fontFamily.Heebo_400,
   },

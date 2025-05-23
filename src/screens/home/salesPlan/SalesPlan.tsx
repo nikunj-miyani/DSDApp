@@ -8,7 +8,6 @@ import {
   SalesPlanItemModal,
   SelectDayModal,
 } from '../../../components';
-import {ms} from 'react-native-size-matters';
 import {
   DirectionIcon,
   DownArrow,
@@ -21,6 +20,7 @@ import {
 } from '../../../utils/Svgs';
 import {orderFilterData} from '../../../utils/ConstantData';
 import {useNavigation} from '@react-navigation/native';
+import {WINDOW_HEIGHT, WINDOW_WIDTH} from '../../../utils/Constant';
 
 const DATA = Array.from({length: 20}, (_, i) => ({
   id: i.toString(),
@@ -128,7 +128,7 @@ const SalesPlan = () => {
         <View className="flex-row items-center p-[12px]">
           <View className="flex-1 flex-row items-start">
             <ShopIcon />
-            <View className="pl-[8px]" style={{bottom: ms(4)}}>
+            <View className="pl-[8px]" style={{bottom: WINDOW_HEIGHT * 0.005}}>
               <Text className="text-[14px] font-Heebo-Regular font-normal text-gray50">
                 Opening Time
               </Text>
@@ -140,7 +140,7 @@ const SalesPlan = () => {
 
           <View className="flex-1 flex-row items-start">
             <VisitTime />
-            <View className="pl-[8px]" style={{bottom: ms(4)}}>
+            <View className="pl-[8px]" style={{bottom: WINDOW_HEIGHT * 0.005}}>
               <Text className="text-[14px] font-Heebo-Regular font-normal text-gray50">
                 Visit Time
               </Text>
@@ -246,7 +246,7 @@ export default SalesPlan;
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.1066,
     color: colors.white,
   },
   headerContainer: {
@@ -254,9 +254,9 @@ const styles = StyleSheet.create({
   },
   selectContainer: {
     flex: 1,
-    height: ms(41),
+    height: WINDOW_HEIGHT * 0.05,
     borderRadius: 4,
-    paddingHorizontal: ms(15),
+    paddingHorizontal: WINDOW_WIDTH * 0.04,
   },
   selectPlaceholder: {
     color: colors.gray100,

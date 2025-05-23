@@ -6422,11 +6422,6 @@ react-native-signature-canvas@^4.7.4:
   resolved "https://registry.yarnpkg.com/react-native-signature-canvas/-/react-native-signature-canvas-4.7.4.tgz#99bcf5b490c3bb1ef04bf538577585edd4a5f47c"
   integrity sha512-8KbZ35yS2nchunk47mQ4lz8JQyvOgLs2rOX45TzqIcFSSIsmCMvbiqLzGH0gLYNq/A5s0Xg+CupzcOfvO5pjRA==
 
-react-native-size-matters@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.2.tgz#4348bdd6fc47383f60326d58ad69870c998a5f9a"
-  integrity sha512-DKE3f/sdcozd24oASgkP1iGg+YU3HoajRa5k3a4wkRzpiqREq8SGX12Y5zBgAt/8IivLQoTMYkyQu1/Giuy+zQ==
-
 react-native-size-scaling@^0.5.1:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/react-native-size-scaling/-/react-native-size-scaling-0.5.4.tgz#51207b9c4fa7bf8770401ca06d3911e9c79a1e5d"

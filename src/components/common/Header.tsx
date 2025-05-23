@@ -11,8 +11,8 @@ import {useNavigation} from '@react-navigation/native';
 import {BackIcon} from '../../utils/Svgs';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../utils/Images';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../utils/Colors';
+import {WINDOW_WIDTH} from '../../utils/Constant';
 
 interface Props {
   showBack?: boolean;
@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
   titleStyle: {
     flex: 1,
     textAlign: 'center',
-    fontSize: ms(20),
+    fontSize: WINDOW_WIDTH * 0.053,
     color: colors.black,
     fontWeight: '600',
   },
   logoStyle: {
-    width: ms(37.85),
-    height: ms(37.85),
+    width: WINDOW_WIDTH * 0.1,
+    height: WINDOW_WIDTH * 0.1,
   },
 });

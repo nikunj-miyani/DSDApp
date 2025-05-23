@@ -2,11 +2,11 @@ import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {CustomInput, Header} from '../../../components';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {productItems} from '../../../utils/ConstantData';
 import FastImage from 'react-native-fast-image';
 import {FilterIcon, GraySearch, PlusIcon, SortIcon} from '../../../utils/Svgs';
+import {WINDOW_HEIGHT, WINDOW_WIDTH} from '../../../utils/Constant';
 
 const ProductList = () => {
   const [search, setSearch] = useState('');
@@ -23,9 +23,12 @@ const ProductList = () => {
         <FastImage
           source={item?.img}
           resizeMode="contain"
-          style={{width: ms(85), height: ms(89), borderRadius: 5}}
+          style={{
+            width: WINDOW_WIDTH * 0.226,
+            height: WINDOW_HEIGHT * 0.11,
+            borderRadius: 5,
+          }}
         />
-
         <View className="flex-1 gap-1 pl-2">
           <Text className="text-black80 text-text16 font-Heebo-Bold font-bold">
             {item?.title}
@@ -58,8 +61,10 @@ const ProductList = () => {
     );
   };
 
-  const itemSeparatorComponent = () => <View style={{height: ms(18)}} />;
-  const listHeaderComponent = <View style={{height: ms(16)}} />;
+  const itemSeparatorComponent = () => (
+    <View style={{height: WINDOW_HEIGHT * 0.022}} />
+  );
+  const listHeaderComponent = <View style={{height: WINDOW_HEIGHT * 0.02}} />;
 
   return (
     <View className="flex-1 bg-white">
@@ -74,7 +79,11 @@ const ProductList = () => {
 
       <View className="flex-row items-center pt-5 px-6 gap-4">
         <CustomInput
-          containerStyle={{flex: 1, borderRadius: 4, height: ms(41)}}
+          containerStyle={{
+            flex: 1,
+            borderRadius: 4,
+            height: WINDOW_HEIGHT * 0.05,
+          }}
           value={search}
           placeholder="Search"
           onChangeText={onChangeSearch}
@@ -97,7 +106,7 @@ const ProductList = () => {
         data={productItems}
         keyExtractor={item => item?.id.toString()}
         renderItem={renderItem}
-        style={{paddingHorizontal: ms(20)}}
+        style={{paddingHorizontal: WINDOW_WIDTH * 0.0533}}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={itemSeparatorComponent}
         ListHeaderComponent={listHeaderComponent}
@@ -112,7 +121,7 @@ export default ProductList;
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.1066,
     color: colors.white,
   },
   headerContainer: {

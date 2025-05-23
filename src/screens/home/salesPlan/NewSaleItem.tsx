@@ -10,10 +10,10 @@ import {
   SearchIcon,
   SortIcon,
 } from '../../../utils/Svgs';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {productItems} from '../../../utils/ConstantData';
 import FastImage from 'react-native-fast-image';
+import {WINDOW_WIDTH} from '../../../utils/Constant';
 
 const NewSaleItem = () => {
   const [product, setProduct] = useState('');
@@ -35,7 +35,11 @@ const NewSaleItem = () => {
         <FastImage
           source={item?.img}
           resizeMode="contain"
-          style={{width: ms(73), height: ms(69), borderRadius: 5}}
+          style={{
+            width: WINDOW_WIDTH * 0.194,
+            height: WINDOW_WIDTH * 0.184,
+            borderRadius: 5,
+          }}
         />
         <View className="gap-2 pl-1">
           <Text className="text-black80 text-text16 font-bold font-Heebo-Bold">
@@ -51,7 +55,7 @@ const NewSaleItem = () => {
 
         <TouchableOpacity
           className="absolute"
-          style={{bottom: ms(12), right: ms(14)}}>
+          style={{bottom: WINDOW_WIDTH * 0.032, right: WINDOW_WIDTH * 0.037}}>
           <Text className="text-red100 text-text14 font-Heebo-Regular font-normal">
             Remove
           </Text>
@@ -60,8 +64,10 @@ const NewSaleItem = () => {
     );
   };
 
-  const itemSeparatorComponent = () => <View style={{height: ms(18)}} />;
-  const listHeaderComponent = <View style={{height: ms(16)}} />;
+  const itemSeparatorComponent = () => (
+    <View style={{height: WINDOW_WIDTH * 0.048}} />
+  );
+  const listHeaderComponent = <View style={{height: WINDOW_WIDTH * 0.043}} />;
 
   return (
     <View className="flex-1 bg-white">
@@ -101,14 +107,22 @@ const NewSaleItem = () => {
           style={styles.shadowStyle}>
           <View className="flex-row items-center justify-between w-full pb-5">
             <CustomInput
-              containerStyle={{width: '66%', borderRadius: 4, height: ms(41)}}
+              containerStyle={{
+                width: '66%',
+                borderRadius: 4,
+                height: WINDOW_WIDTH * 0.109,
+              }}
               value={product}
               placeholder="Product ID or Name"
               onChangeText={onChangeProduct}
               placeholderColor={colors.gray90}
             />
             <CustomInput
-              containerStyle={{width: '28%', borderRadius: 4, height: ms(41)}}
+              containerStyle={{
+                width: '28%',
+                borderRadius: 4,
+                height: WINDOW_WIDTH * 0.109,
+              }}
               value={quantity}
               placeholder="QTY"
               keyboardType="numeric"
@@ -133,7 +147,7 @@ const NewSaleItem = () => {
             data={productItems}
             keyExtractor={item => item?.id.toString()}
             renderItem={renderItem}
-            style={{paddingHorizontal: ms(20)}}
+            style={{paddingHorizontal: WINDOW_WIDTH * 0.053}}
             showsVerticalScrollIndicator={false}
             ItemSeparatorComponent={itemSeparatorComponent}
             ListHeaderComponent={listHeaderComponent}
@@ -160,7 +174,7 @@ export default NewSaleItem;
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.107,
     color: colors.white,
   },
   headerContainer: {

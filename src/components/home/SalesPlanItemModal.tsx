@@ -2,10 +2,10 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Modal from 'react-native-modal';
 import {colors} from '../../utils/Colors';
-import {ms} from 'react-native-size-matters';
 import {CrossIcon, OrderIcon, UserIcon} from '../../utils/Svgs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
+import {WINDOW_HEIGHT} from '../../utils/Constant';
 
 type SalesPlanItemModalProps = {
   isVisible: boolean;
@@ -36,7 +36,7 @@ const SalesPlanItemModal: React.FC<SalesPlanItemModalProps> = ({
       <View
         className="bg-white pt-10 px-10"
         style={{
-          paddingBottom: bottom + ms(16),
+          paddingBottom: bottom + WINDOW_HEIGHT * 0.02,
         }}>
         <View className="flex-row items-center pb-[12px]">
           <Text className="flex-1 text-[18px] font-Heebo-Bold font-bold text-black90">
@@ -52,14 +52,20 @@ const SalesPlanItemModal: React.FC<SalesPlanItemModalProps> = ({
         <TouchableOpacity
           className="flex-row items-center py-[10px] gap-5"
           onPress={onPressCustomerDetails}>
-          <UserIcon width={ms(18)} height={ms(18)} />
+          <UserIcon
+            width={WINDOW_HEIGHT * 0.022}
+            height={WINDOW_HEIGHT * 0.022}
+          />
           <Text className="text-[16px] font-Heebo-Regular font-normal text-black90">
             Customer Details
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity className="flex-row items-center py-[10px] gap-5">
-          <OrderIcon width={ms(18)} height={ms(18)} />
+          <OrderIcon
+            width={WINDOW_HEIGHT * 0.022}
+            height={WINDOW_HEIGHT * 0.022}
+          />
           <Text className="text-[16px] font-Heebo-Regular font-normal text-black90">
             View Order
           </Text>

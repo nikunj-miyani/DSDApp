@@ -2,11 +2,11 @@ import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Header} from '../../../components';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {productItems} from '../../../utils/ConstantData';
 import FastImage from 'react-native-fast-image';
 import {PlusIcon} from '../../../utils/Svgs';
+import {WINDOW_WIDTH} from '../../../utils/Constant';
 
 const SearchScreen = () => {
   const renderItem = ({item}: any) => {
@@ -52,8 +52,10 @@ const SearchScreen = () => {
     );
   };
 
-  const itemSeparatorComponent = () => <View style={{height: ms(18)}} />;
-  const listHeaderComponent = <View style={{height: ms(16)}} />;
+  const itemSeparatorComponent = () => (
+    <View style={{height: WINDOW_WIDTH * 0.048}} />
+  );
+  const listHeaderComponent = <View style={{height: WINDOW_WIDTH * 0.042}} />;
 
   return (
     <View className="flex-1 bg-white">
@@ -70,7 +72,7 @@ const SearchScreen = () => {
         data={productItems}
         keyExtractor={item => item?.id.toString()}
         renderItem={renderItem}
-        style={{paddingHorizontal: ms(20)}}
+        style={{paddingHorizontal: WINDOW_WIDTH * 0.053}}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={itemSeparatorComponent}
         ListHeaderComponent={listHeaderComponent}
@@ -85,7 +87,7 @@ export default SearchScreen;
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.1066,
     color: colors.white,
   },
   headerContainer: {

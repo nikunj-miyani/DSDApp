@@ -7,10 +7,10 @@ import {
   EndingLocationModal,
   Header,
 } from '../../../components';
-import {ms} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import {RightArrow} from '../../../utils/Svgs';
 import {useNavigation} from '@react-navigation/native';
+import {WINDOW_WIDTH} from '../../../utils/Constant';
 
 const ActivityItem = ({title, rightText}: any) => {
   return (
@@ -169,7 +169,7 @@ export default StoreActivity;
 const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'left',
-    paddingLeft: ms(40),
+    paddingLeft: WINDOW_WIDTH * 0.1066,
     color: colors.white,
   },
   headerContainer: {

@@ -4,8 +4,8 @@ import Modal from 'react-native-modal';
 import {colors} from '../../utils/Colors';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../utils/Images';
-import {ms} from 'react-native-size-matters';
 import CustomButton from '../common/CustomButton';
+import {WINDOW_HEIGHT} from '../../utils/Constant';
 
 type SaleStoreDetailModalProps = {
   isVisible: boolean;
@@ -31,7 +31,10 @@ const SaleStoreDetailModal: React.FC<SaleStoreDetailModalProps> = ({
         <FastImage
           source={images.reactNativeImg}
           resizeMode="contain"
-          style={{width: ms(75), height: ms(75)}}
+          style={{
+            width: WINDOW_HEIGHT * 0.09,
+            height: WINDOW_HEIGHT * 0.09,
+          }}
         />
         <Text className="pt-[22px] text-[18px] text-black90 font-heebo700 font-bold">
           NOT AT THE STORE
