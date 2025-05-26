@@ -46,7 +46,7 @@ const Login = () => {
     setIsSecure(!isSecure);
   };
   const onPressLogin = () => {
-    navigate('Main');
+    navigate('DrawerStack');
   };
 
   return (

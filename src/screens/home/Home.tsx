@@ -6,7 +6,7 @@ import {MenuIcon, TripIcon, VicIcon} from '../../utils/Svgs';
 import {homeData} from '../../utils/ConstantData';
 import {bottomBarHeight, WINDOW_WIDTH} from '../../utils/Constant';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const {bottom} = useSafeAreaInsets();
 
   const renderTripItems = ({item, index}) => {
@@ -30,10 +30,18 @@ const Home = () => {
   );
   const itemSeparatorComponent = () => <View className="h-[18px]" />;
 
+  const onPressLeft = () => {
+    navigation.openDrawer();
+  };
+
   return (
     <View className="flex-1 bg-white">
       <SafeAreaView edges={['top']} />
-      <Header isLogo leftSource={<MenuIcon />} />
+      <Header
+        isLogo
+        leftSource={<MenuIcon />}
+        onPressLeftSource={onPressLeft}
+      />
       <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
         <View className="px-5 pt-6">
           <View className="bg-blue100 rounded-2xl overflow-hidden px-3 pt-4 pb-4">

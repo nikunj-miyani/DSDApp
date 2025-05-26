@@ -36,6 +36,7 @@ import LoadTruck from '../screens/home/salesPlan/LoadTruck';
 import SearchScreen from '../screens/home/salesPlan/SearchScreen';
 import ProductList from '../screens/home/salesPlan/ProductList';
 import FinalLoadTruck from '../screens/home/salesPlan/FinalLoadTruck';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Stack = createStackNavigator();
 
@@ -45,23 +46,44 @@ const BottomTabStack = () => {
   const _renderIcon = (routeName: string, selectedTab: string) => {
     switch (routeName) {
       case 'Home':
-        return routeName === selectedTab ? <HomeActive /> : <HomeActive />;
+        return routeName === selectedTab ? (
+          <HomeActive color={colors.blue100} />
+        ) : (
+          <HomeActive color={colors.gray50} />
+        );
       case 'History':
-        return routeName === selectedTab ? <HistoryIcon /> : <HistoryIcon />;
+        return routeName === selectedTab ? (
+          <HistoryIcon color={colors.blue100} />
+        ) : (
+          <HistoryIcon color={colors.gray50} />
+        );
       case 'Products':
-        return routeName === selectedTab ? <ProductsIcon /> : <ProductsIcon />;
+        return routeName === selectedTab ? (
+          <ProductsIcon color={colors.blue100} />
+        ) : (
+          <ProductsIcon color={colors.gray50} />
+        );
       case 'Settings':
-        return routeName === selectedTab ? <SettingsIcon /> : <SettingsIcon />;
+        return routeName === selectedTab ? (
+          <SettingsIcon color={colors.blue100} />
+        ) : (
+          <SettingsIcon color={colors.gray50} />
+        );
     }
   };
 
   const renderTabBar = ({routeName, selectedTab, navigate}: any) => {
+    console.log(selectedTab, routeName);
+
     return (
       <TouchableOpacity
         onPress={() => navigate(routeName)}
         className="flex-1 justify-center items-center">
         {_renderIcon(routeName, selectedTab)}
-        <Text className="text-text12 font-Heebo-Regular font-normal text-gray70 pt-2">
+        <Text
+          className={`text-text12 font-Heebo-Regular font-normal text-gray70 pt-2 ${
+            routeName === selectedTab ? 'color-blue100' : 'color-gray50'
+          }`}>
           {routeName}
         </Text>
       </TouchableOpacity>
@@ -111,13 +133,32 @@ const BottomTabStack = () => {
   );
 };
 
+const DrawerStack = () => {
+  const Drawer = createDrawerNavigator();
+  // const currentScreen = navigationRef?.getCurrentRoute()?.name;
+
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        // drawerWidth: Dimensions.get('window').width,
+        // drawerStyle: { width: width / 1.18 },
+      }}
+      // drawerContent={(props) => <MyDrawer {...props} />}
+    >
+      <Drawer.Screen name="TabNavigation" component={BottomTabStack} />
+    </Drawer.Navigator>
+  );
+};
+
 const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="ProductList"
+      // initialRouteName="ProductList"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="DrawerStack" component={DrawerStack} />
       <Stack.Screen name="Main" component={BottomTabStack} />
 
       <Stack.Screen name="SalesPlan" component={SalesPlan} />
